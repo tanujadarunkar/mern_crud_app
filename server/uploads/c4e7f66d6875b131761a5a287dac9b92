@@ -1,0 +1,343 @@
+NODE JS :-
+
+1) Node js is a cross platform runtime environment the javaScript code runs outside the browser.
+2) It is an open source.
+3) It used to create server side and networking application.
+
+FEATURES OF NODE JS:-
+1) Extremly fast.
+2) Single threaded.
+3) Input and output asynchronously.
+4) Open source.
+5) High scalable.
+
+PACKAGES:-
+1) Express
+2) Mongo
+3) Socket.io
+
+ADVANTAGES OF NODE JS:-
+1) Creating API.
+2) Authentication.
+3) Authorization.
+
+Example:-
+1) Open Command Prompt
+2) Write node
+3) Then create function.
+
+function add(a,b){
+       return a+b
+}
+add(10,20)
+ANS:-30
+
+     |-->Read --->|
+     |            |
+    Print <--- Evaluate
+
+INSTALLATION:-
+--> Install Node Js.
+   --> Create folder in desktop Node2.0
+      --> index.js create a file
+         --> open terminal
+            --> node index.js
+
+R --> Read
+E --> Evaluate
+P --> Print
+L --> Loop
+
+MODULES:-
+It is a simple or complex functionality organize in single or multiple javaScript files which can be reused throughout the node.
+
+There are three types of modules:
+1) Core Modules(built-in modules)
+2) Local Modules
+3) Third Party Modules
+
+1) CORE MODULES(built-in modules) :-
+Node js are many built-in modules that are part of the platform and come with Node Js Installation.
+     i)   operating system.
+     ii)  path(file paths)
+     iii) http
+     iv)  file system 
+      v)  event
+
+   i) operating system:-
+         const os = requires('os')
+         console.log(os.type())
+         console.log(os.version())
+         console.log(os.freemem())
+         console.log(os.cpus())
+   ii) path:-
+         const path = require('path');
+         console.log(path.dirname(__filename));
+         console.log(path.basename(__filename));
+         console.log(path.extname(__filename));
+         console.log(path.parse(__filename));
+   iii) FS(file system)
+        The node js file system modules allows you to work with file system on your computer.
+        Common use for the file system modules
+           read file
+           create file
+           update file
+           delete file
+           rename file
+
+  1) read file:-
+     const fs = require('fs')
+     fs.readFile('./demo.txt',(err,data)=>{
+         if(err){
+               console.log(err);
+         }
+         console.log(data);
+     })
+      Output:- 
+      <buffer 47 46 78 89 78 56 34 25 67>
+              
+  Buffer is a way to store and manipulate binary data in node js.
+  Binary data refers data that consist of binary value
+  Example:-
+         const fs = require('fs')
+         fs.readFile('./demo.txt','utf-8',(err,data)=>{
+             if(err){
+                    console.log(err);
+             }
+             console.log(data);
+         })
+          Output:-
+          I Am Tanuja Darunkar
+
+
+   2) create file:-
+       Example 1://without declaring variable...
+       const fs = require('fs')
+       fs.writeFile('index.html',"Hello",(err,data)=>{
+            if(err)
+            {
+                console.log(err);
+            }
+            console.log("File is Created");
+       })
+       Output:-index.html file is created with message:-
+               Hello
+
+       Example 2://with variable...
+       const fs = require('fs')
+       const content = "I am learning node js"
+       fs.writeFile('index.css',content,(err,data)=>{
+             if(err)
+             {
+                 console.log(err);
+             }
+             console.log("File is Created");
+       })
+       Output:-index.css file created with message:-
+               I am learning node js
+
+
+    3) delete file:-
+       Example:
+       const fs require('fs')
+       fs.unlink('index.css',(err,data)=>{
+           if(err)
+           {
+               console.log(err);
+           }
+           console.log("File is Deleted");
+       })
+       Output:- index.css file deleted.
+
+    iv) http:-
+       1) Node js as a built-in module called http which allows node js to transfer data over the hyperText transfer protocol.
+       2) http module can create http server that listen server ports.
+       Example:-
+             const http = require('http')
+             http.createServer((req,res)=>{
+                   res.write("WE CREATED SERVER");
+                   res.end()
+             }).listen(8080)
+             Output:- Server created on localhost8080.
+
+     v) event:-
+       1) Event module allows to work with events in node js.
+       2) Event is an action which helps in a webpage to trigger something.
+       Example:-
+              const EventEmitter = require('events')
+              const emitter = new EventEmitter()
+              emitter.on('Order Pizza',(size,topping)=>{
+                    console.log(`Your pizza is Baking and Your Order is ${size} and ${topping}`);
+              })
+               emitter.emit('Order Pizza',"Regular","Capsicum")
+              Output:-Your pizza is Baking and Your Order is Regular and Capsicum.
+
+
+2)LOCAL MODULES:-
+    1) Local modules you can create your own modules.
+
+   Calculator Module.js                                            Index.js
+----------------------------------------------------------------------------------------------------------------------------
+   1) function add(a,b)=>{                                    1) const {add} require = 'CalculateModule'                                                         
+        return a+b                                               console.log(add(10,20));
+   }                                                    
+   modules.export = {add}
+
+
+
+MidWare:-
+----------
+1) Which is helps to webpage and the server.
+2) It is process of incoming request before they reach app code can also modify the outgoing response.
+diagram:-
+
+Midware process the request and forward further.
+
+EXPRESS:-
+---------
+
+Express:- 
+1) It is a routing and midware web framework.
+2) It is used to build a single page, multipage and hybrid web application.
+3) Express is a node js web application framework.
+
+INSTALLATION:-
+--> Create a folder Express
+   --> open terminal
+      --> npm init -y
+         --> npm install
+            --> npm i express
+               --> create index.js
+                  --> node index.js
+
+Example: 
+       const express = require('express')
+       const app = express()
+       app.get('/',(req,res)=>{
+             res.send("Hello we created Express Server");
+             res.end()
+       })
+       app.listen(3000,()=>{
+             console.log("Server is Created");
+       })
+
+Midware in Express:-
+Example:
+        const express = require('express')
+        const app = express()
+        app.use((req,res,next)=>{
+               if(10<20){
+               next()
+               }
+        })
+        app.get('/',(req,res)=>{
+              res.send("Home Page")
+        })
+        app.get('/about',(req,res)=>{
+              res.send("About Page")
+        })
+        app.listen(3000,()=>{
+              console.log("Server is Created");
+        })
+
+
+MONGODB:-
+-----------------
+
+--> Project
+   --> New Project
+      --> Project Name
+         --> Next
+            --> Create Project
+               --> Create
+                  --> Free
+                     --> Create
+                        --> Username
+                           --> Password
+                              --> Create User
+                                 --> 0.0.0.0-->ip address
+                                    --> Finish & Close
+                                       --> Go to Overview
+                                          --> Connect 
+                                             --> Driver
+                                                --> Copy Link
+
+Mongo DB is an open source which store data in a unstructured format. It not follows RDBMS format
+Packages:-
+         npm i mongoose
+         npm i mongodb
+
+dotenv  :- 1) is a zero dependency module that loads environment variable from dotenv file into process dotenv.
+           2) storing configuration in the seperate file.
+
+Example:-index.js:-
+       const express = require('express');
+       const mongoose = require('mongoose');
+       const dotenv = require('dotenv');
+       const app = express();
+       const port = 5000
+       dotenv.config()
+       mongoose.connect(process.env.MONGO_URL)
+       .then(()=>console.log("DB Connected"))
+       .catch(err=>console.log(err))
+       app.get('/',(req,res)=>{
+            res.send("Hello server is connected")
+       })
+       app.listen(port,()=>{
+             console.log("Server is Created");
+       });
+
+       .env
+       MONGO_URL = "mongodb+srv://tanujadarunkar:Tanuja1508@cluster0.y0erkak.mongodb.net/Node"
+
+       Output:- Server is Created
+                DB Connected.
+
+API :- is a set of rules and protocols that allows different software.
+       there are two types of API's:
+        1) REST
+        2) SOAP
+        3) GraphSQL
+        4) Wed Api's
+
+1) REST
+REST stands for "Representation State Transfer".
+i)  It is a set of rules and convention for building and interacting with web services.
+ii) Modal View Controller(MVC) Diagram:-
+
+         Modal is a data part
+         View is user interface part
+         Controller is request response handler.
+
+http - HyperText Transfer Protocol.
+It is method for encoding and transporting information between a client and web server.
+
+Q. What are API request method?
+i) get method - retrieve information from specified resource.
+ii) post method - send data to a specified resource.
+iii) put method - update a specified resource with new data.
+iv) delete method - delete a specified resource.
+
+REST API status code:- 200 --> success
+                       302 --> Url redirection
+                       401 --> Unauthorized
+                       404 --> Not Found
+                       500 --> System Error 
+
+
+MONGODB METHODS:-
+post --> create --> create
+get --> read --> find
+put --> update --> findByIdandUpdate
+delete --> delete --> findByIdandDelete
+getonce --> Read --> findById
+
+
+
+
+
+
+
+
+
+

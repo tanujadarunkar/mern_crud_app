@@ -1,0 +1,262 @@
+Q.1
+----------------------------------------------------------------
+1)first Class
+public class Vehicle {
+    void start()
+    {
+        System.out.println("VEHICLE STARTED");
+    }
+    void accelerate()
+    {
+        System.out.println("VEHICLE ACCELERATED");
+    }
+    void brake()
+    {
+        System.out.println("VEHICLE STOPPED");
+    }
+
+}
+
+2)second class
+public class Car extends Vehicle{
+    @Override
+    void start() {
+        System.out.println("CAR STARTED");
+    }
+
+    @Override
+    void accelerate() {
+        System.out.println("CAR IS ACCELERATED");
+    }
+
+    @Override
+    void brake() {
+        System.out.println("CAR STOPPED");
+    }
+}
+
+3)Third class
+public class Motorcycle extends Vehicle{
+    void start() {
+        System.out.println("MOTORCYCLE STARTED");
+    }
+
+    @Override
+    void accelerate() {
+        System.out.println("MOTORCYCLE IS ACCELERATED");
+    }
+
+    @Override
+    void brake() {
+        System.out.println("MOTORCYCLE STOPPED");
+    }
+}
+4)fourth class
+public class Truck extends Vehicle {
+    void start() {
+        System.out.println("TRUCK STARTED");
+    }
+
+    @Override
+    void accelerate() {
+        System.out.println("TRUCK IS ACCELERATED");
+    }
+
+    @Override
+    void brake() {
+        System.out.println("TRUCK STOPPED");
+    }
+}
+
+5) fifth main class
+public class MainVehicle {
+    public static void main(String[] args) {
+        Truck t1 = new Truck();
+        t1.start();
+        t1.accelerate();
+        t1.brake();
+        System.out.println("--------------------------");
+        Motorcycle m1 = new Motorcycle();
+        m1.start();
+        m1.accelerate();
+        m1.brake();
+        System.out.println("--------------------------");
+        Car c1 = new Car();
+        c1.start();
+        c1.accelerate();
+        c1.brake();
+
+    }
+}
+
+
+
+
+Q.3
+-----------------------------------------------------------------------
+1)first class
+public class Vehicle {
+    void start()
+    {
+        System.out.println("VEHICLE STARTED");
+    }
+    void stop()
+    {
+        System.out.println("VEHICLE STOPPED");
+    }
+}
+
+2) second class
+public class Car extends Vehicle{
+    @Override
+    void start() {
+        System.out.println("CAR STARTED");
+    }
+    void accelerate()
+    {
+        System.out.println("CAR IS MOVING");
+    }
+    @Override
+    void stop() {
+        System.out.println("CAR STOPPED");
+    }
+}
+
+3)third class
+public class Motorcycle extends Vehicle{
+    @Override
+    void start() {
+        System.out.println("MOTORCYCLE STARTED");
+    }
+    void wheelie()
+    {
+        System.out.println("MOTORCYCLE IS RUNNING");
+    }
+
+    @Override
+    void stop() {
+        System.out.println("MOTORCYCLE STOPPED");
+    }
+}
+
+4)fourth main class
+import java.util.Scanner;
+
+public class MainAppVehicle {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //upcasting
+        Vehicle[] v1 = {new Car(), new Motorcycle()};
+        System.out.println("SELECT VEHICLE");
+        System.out.println("1: Car\n2: Motorcycle");
+        int choice = sc.nextInt();
+        for(int i=0; i< v1.length; i++)
+        {
+            if(choice == 1 && v1[i] instanceof Car)
+            {
+                Car c1 = (Car) v1[i];//down casting
+                c1.start();
+                c1.accelerate();
+                c1.stop();
+            } else if (choice==2 && v1[i] instanceof Motorcycle) {
+                Motorcycle m1 = (Motorcycle) v1[i];
+                m1.start();
+                m1.wheelie();
+                m1.stop();
+            }
+        }
+    }
+}
+
+
+
+Q.4)
+------------------------------------------------------------------------------
+1)first class
+public class UserAuthentication {
+    String email = "abc@gmail.com";
+    String password = "12345";
+    long contact = 2345667;
+    void login(long contactNo, String pass)
+    {
+        if(contact==contactNo)
+        {
+            if(password.equals(pass))
+            {
+                System.out.println("LOGIN SUCCESSFUL");
+            }
+        }
+    }
+    void login(String emailId, String pass)
+    {
+        if(email.equals(emailId))
+        {
+            if(password.equals(pass))
+            {
+                System.out.println("LOGIN SUCCESSFUL");
+            }
+        }
+    }
+}
+
+2)second mainclass
+package InheritanceTest;
+
+import java.util.Scanner;
+
+public class MainAppAuthentication {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        UserAuthentication u1 = new UserAuthentication();
+        System.out.println("SELECT FIELD TO LOGIN");
+        System.out.println("1: LOGIN BY EMAIL");
+        System.out.println("2: LOGIN BY CONTACT");
+        int choice = sc.nextInt();
+
+        if(choice==1)
+        {
+            System.out.println("ENTER EMAIL ID: ");
+            String emailId = sc.next();
+            System.out.println("ENTER PASSWORD: ");
+            String pass = sc.next();
+            u1.login(emailId,pass);
+        } else if (choice==2) {
+            System.out.println("ENTER CONTACT NUMBER: ");
+            long contactNo = sc.nextLong();
+            System.out.println("ENTER PASSWORD: ");
+            String pass = sc.next();
+            u1.login(contactNo,pass);
+        }
+        else
+        {
+            System.out.println("INVALID CHOICE");
+        }
+    }
+}
+
+
+
+Q.2)
+-----------------------------------------------------------------------------
+1)
+public class Laptop {
+    Laptop(String brand)
+    {
+        System.out.println("BRAND "+brand);
+    }
+    Laptop(String version, double price)
+    {
+        System.out.println("VERSION "+version);
+        System.out.println("PRICE "+price);
+    }
+}
+
+2)
+package upcasting;
+
+public class MainLaptop {
+    public static void main(String[] args) {
+        Laptop l1 = new Laptop("HP");
+        Laptop l2 = new Laptop("v5", 67000);
+    }
+}
